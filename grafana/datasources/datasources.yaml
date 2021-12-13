@@ -5,11 +5,11 @@ datasources:
     type: postgres
     access: proxy
     url: postgres:5432
-    user: postgres
-    database: postgres
+    user: analytics
+    database: analytics
     jsonData:
       postgresVersion: 1200
       sslmode: 'disable'
     secureJsonData:
-      password: 'postgres'
+      password: 'analytics'
 
