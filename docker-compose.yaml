@@ -28,8 +28,8 @@ services:
   pyspark:
     build: ./pyspark
     restart: always
-    environment:
-      DATA_CREDENTIALS: need_to_add_these_securely
+    env_file:
+      - pyspark-variables.env
 
 volumes:
   var-lib-grafana:
