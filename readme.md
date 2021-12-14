@@ -15,20 +15,28 @@ The above is currently in progress, instructions below and how to currently run 
 
 1.  Clone the repo
 2.  Make sure that docker is installed.
-3.  Type `docker compose up` to start the services
-4.  Type `docker ps` to see the available docker containers
-5.  Type `docker exec -it pyspark_container bash` to get into the pyspark container.
-6.  Type `/opt/spark/bin/pyspark` to start a pyspark session
-7.  At this point can run the code in `write_df.py` to create a pyspark data frame (either from test data or by reading from a delta lake) and then write it to the postgres database.
-8.  To launch grafana go to `localhost:3001` and log in with admin/admin
-9.  Create dashboards based on data in postgres
+3.  Ensure that a file named `pyspark-variables.env` is present and correctly filled in with Azure Storage account details.  Make a copy of `pyspark-variables.env.example`
+4.  Type `make up` to start the services
+5.  In another terminal window, type `make get-data` to pull data from the delta lake on the storage account, and load the data into the postgres db.  Running the command again will overwrite the data in postgres.
+6.  Type `make help` for additional commands
+7.  To launch grafana go to `localhost:3001` and log in with admin/admin
+8.  Create dashboards based on data in postgres
+
+# Other tips
+
+Look at the Makefile to see what the make commands are doing
+
+-  Type `docker ps` to see the available docker containers
+-  Type `docker exec -it pyspark_container bash` to get into the pyspark container.
+-  Type `/opt/spark/bin/pyspark` to start a pyspark session
+-  At this point can run the code in `write_df.py` to create a pyspark data frame (either from test data or by reading from a delta lake) and then write it to the postgres database.
 
 # To do
 
-- Parameterise config for access to delta lake etc
-- Add makefile to provide a wrapper over standard commands
+- Add standard visualisations
 - Automate data refresh - ie get data from delta lake, write to postgres
     - Overwrite everything to start with
     - Append most recent data later
-- How to automatically populate dashboards etc with standard viz?
+- How to configure multiple tables/visualisations
+
 
