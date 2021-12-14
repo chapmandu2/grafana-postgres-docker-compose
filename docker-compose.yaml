@@ -25,6 +25,12 @@ services:
       - "./postgres/init-scripts:/docker-entrypoint-initdb.d"
       - var-lib-postgresql:/var/lib/postgresql/data
 
+  pyspark:
+    build: ./pyspark
+    restart: always
+    environment:
+      DATA_CREDENTIALS: need_to_add_these_securely
+
 volumes:
   var-lib-grafana:
   var-lib-postgresql:
