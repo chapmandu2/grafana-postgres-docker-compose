@@ -15,6 +15,7 @@ services:
     volumes:
       - "./grafana-provisioning:/etc/grafana/provisioning"
       - "var-lib-grafana:/var/lib/grafana"
+      - "./grafana-dashboards:/var/lib/grafana-provisioned-dashboards"
 
   postgres:
     image: postgres:14
