@@ -31,6 +31,8 @@ services:
     restart: always
     env_file:
       - pyspark-variables.env
+    volumes:
+      - "./pyspark:/opt/pyscripts"
 
 volumes:
   var-lib-grafana:

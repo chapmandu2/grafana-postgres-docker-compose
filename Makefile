@@ -13,4 +13,4 @@ down:
 	docker compose down
 
 get-data:
-	docker exec -it grafana-postgres-docker-compose-pyspark-1 /opt/spark/bin/spark-submit main.py
+	docker exec -it grafana-postgres-docker-compose-pyspark-1 /opt/spark/bin/spark-submit /opt/pyscripts/main.py
